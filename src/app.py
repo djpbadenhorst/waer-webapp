@@ -12,11 +12,11 @@ app = Flask(__name__, static_url_path='/')
 
 @app.route('/panel',methods=['GET'])
 def index_get():
-    return render_template('index.html', context={})
+    return render_template('index.html', device=request.args.get('device','garmin'))
 
 @app.route('/panel/signup',methods=['GET'])
 def signup_get():
-    return redirect(waer_utils.get_auth_url())
+    return redirect(waer_utils.get_auth_url(request.args.get('device','garmin')))
 
 @app.route('/panel/success',methods=['GET'])
 def success_get():

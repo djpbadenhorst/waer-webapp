@@ -5,14 +5,14 @@ import pandas as pd
 from google.cloud import storage
 
 
-def get_auth_url():
+def get_auth_url(device):
     response = requests.post('https://api.tryterra.co/v2/auth/authenticateUser', headers={
         'accept': 'application/json',
         'content-type': 'application/json',
         'dev-id': 'waer-U40516NESV',
         'x-api-key': 'a639615c4991764f9dba6ab9a7b711a3bf1f971aaa2ff561edc13fd2f8f8311c'
     }, json={
-       'resource': 'GARMIN',
+       'resource': device,
        'auth_success_redirect_url': 'https://test-sgonnekoiq-uc.a.run.app/panel/success',
        'auth_failure_redirect_url': 'https://test-sgonnekoiq-uc.a.run.app/panel/failure'
     })
